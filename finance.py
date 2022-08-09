@@ -16,7 +16,5 @@ print(df.columns)
 col1, col2, col3 = st.columns(3)
 col1.metric("현재 주식가격", df['종가'].tail(1)[0], df['종가'].diff().tail(1)[0])
 col2.metric("현재 거래량", df['거래량'].tail(1)[0], round(df['거래량'].pct_change().tail(1)[0] * 100, 2))
-col3.metric("전일 대비 가격", df['전일대비'].tail(1)[0], round(df['전일대비'].tail(1)[0] * 100, 2))
+col3.metric("전일 대비 가격", round(df['전일대비'].tail(1)[0], 4), round(df['전일대비'].tail(1)[0] * 100, 2))
 
-
-# 현재 시가, 전일대비 거래량, 전일대비 가격 상승 or 하락
