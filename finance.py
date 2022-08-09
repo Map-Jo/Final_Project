@@ -4,7 +4,7 @@ import FinanceDataReader as fdr
 
 Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
-Name = st.text_input('Code Name','종목명을 입력하세요.')
+Name = st.text_input('Code Name')
 Code_name_list = Stockcode.index.tolist()
 
 if Name in Code_name_list:
@@ -16,6 +16,6 @@ if Name in Code_name_list:
     col2.metric("현재 거래량", df['거래량'].tail(1)[0],"%.2f%%" %(df['거래량'].pct_change().tail(1)[0] * 100))
     col3.metric("전일 대비 가격", round(df['전일대비'].tail(1)[0], 4), "%.2f%%" %(df['전일대비'].tail(1)[0] * 100))
 elif Name not in Code_name_list:
-    print('찾으시는 주식 종목이 없습니다. 정확하게 입력해주세요.')
+    st.text('찾으시는 주식 종목이 없습니다. 정확하게 입력해주세요.')
 
 
