@@ -7,7 +7,7 @@ Stockcode.set_index('Name', inplace=True)
 
 
 
-Name = st.text_input('Code Name')
+Name = st.text_input('Code Name','종목명을 입력하세요.')
 code_num = Stockcode.at[Name, 'Symbol']
 df = fdr.DataReader(code_num)
 df = df.rename(columns={'Open':'시가', 'High':'고가','Low':'저가', 'Close':'종가', 'Volume':'거래량', 'Change':'전일대비'})
