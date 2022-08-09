@@ -4,14 +4,15 @@ import FinanceDataReader as fdr
 
 Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
+Code_name_list = Stockcode.index.tolist()
 
-
-
-Name = st.text_input('Code Name','종목명을 입력하세요.')
-code_num = Stockcode.at[Name, 'Symbol']
-df = fdr.DataReader(code_num)
-df = df.rename(columns={'Open':'시가', 'High':'고가','Low':'저가', 'Close':'종가', 'Volume':'거래량', 'Change':'전일대비'})
-print(df.columns)
+if Name in Code_name_list:
+    Name = st.text_input('Code Name','종목명을 입력하세요.')
+    code_num = Stockcode.at[Name, 'Symbol']
+    df = fdr.DataReader(code_num)
+    df = df.rename(columns={'Open':'시가', 'High':'고가','Low':'저가', 'Close':'종가', 'Volume':'거래량', 'Change':'전일대비'})
+else:
+    pass
 
 col1, col2, col3 = st.columns(3)
 col1.metric("현재 주식가격","%d원" %df['종가'].tail(1)[0], "%d원" %df['종가'].diff().tail(1)[0])
