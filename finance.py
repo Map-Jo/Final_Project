@@ -4,5 +4,6 @@ import FinanceDataReader as fdr
 
 
 code = st.text_input('Code Num')
-date = st.text_input('Date')
+date = st.number_input('Date')
 df = fdr.DataReader(code, date)
+df
