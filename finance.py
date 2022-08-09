@@ -4,6 +4,8 @@ import FinanceDataReader as fdr
 
 
 code = st.text_input('Code Num')
-date = st.text_input('Date')
+date = st.date_input(
+     "When's your birthday",
+     datetime.date(2019, 7, 6))
 df = fdr.DataReader(code, date).sort_index(ascending=False)
 df
