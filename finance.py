@@ -11,8 +11,8 @@ if Name in Code_name_list:
     code_num = Stockcode.at[Name, 'Symbol']
     df = fdr.DataReader(code_num)
     df = df.rename(columns={'Open':'시가', 'High':'고가','Low':'저가', 'Close':'종가', 'Volume':'거래량', 'Change':'전일대비'})
-else:
-    pass
+elif Name not in Code_name_list:
+    print('찾으시는 주식 종목이 없습니다. 정확하게 입력해주세요.')
 
 col1, col2, col3 = st.columns(3)
 col1.metric("현재 주식가격","%d원" %df['종가'].tail(1)[0], "%d원" %df['종가'].diff().tail(1)[0])
