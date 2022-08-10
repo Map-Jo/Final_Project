@@ -19,5 +19,6 @@ if Name in Code_name_list:
     col3.metric("전일 대비 가격", round(df['전일대비'].tail(1)[0], 4), "%.2f%%" %(df['전일대비'].tail(1)[0] * 100))
     fig = plt.plot(df['종가'])
     plt.title(Name)
+    st.pyplot(fig)
 elif Name not in Code_name_list:
     st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
