@@ -5,15 +5,15 @@ import matplotlib.pyplot as plt
 import koreanize_matplotlib
 import plotly.express as px
 
-# st.set_page_config(
-#     page_title="반포자이까지 한걸음",
-#     page_icon= "chart_with_upwards_trend",
-#     layout="wide",
-# )
+st.set_page_config(
+    page_title="반포자이까지 한걸음",
+    page_icon= "chart_with_upwards_trend",
+    layout="wide",
+)
 
-# st.sidebar.markdown("# Local Stocks 📊")
+st.sidebar.markdown("# Local Stocks 📊")
 
-# st.title('Local Stocks 📈')
+st.title('Local Stocks 📈')
 Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
 Name = st.text_input('Code Name')
