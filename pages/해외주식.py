@@ -6,7 +6,7 @@ import koreanize_matplotlib
 import plotly.express as px
 
 st.set_page_config(
-    page_title="반포자이까지 한걸음 APP",
+    page_title="반포자이까지 한걸음",
     page_icon= "chart_with_upwards_trend",
     layout="wide",
 )
