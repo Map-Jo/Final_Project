@@ -3,3 +3,4 @@ streamlit
 finance-dataReader
 matplotlib
 koreanize_matplotlib
+plotly
