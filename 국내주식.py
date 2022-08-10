@@ -28,22 +28,9 @@ if Name in Code_name_list:
     col2.metric("현재 거래량", format(df['거래량'].tail(1)[0], ','),"%.2f%%" %(df['거래량'].pct_change().tail(1)[0] * 100))
     col3.metric("전일 대비 가격", round(df['전일대비'].tail(1)[0], 4), "%.2f%%" %(df['전일대비'].tail(1)[0] * 100))
     fig = plt.figure(facecolor='white', figsize=(20, 10))
-    # plt.plot(df['종가'])
-    # plt.title(Name)
-    # st.pyplot(fig)
-    fig = px.line(df, y='종가', title='{}의 종가(close) Time Series'.format(Name))
+    plt.plot(df['종가'])
+    plt.title(Name)
+    st.pyplot(fig)
 
-    fig.update_xaxes(
-        rangeslider_visible=True,
-        rangeselector=dict(
-            buttons=list([
-                dict(count=1, label="1m", step="month", stepmode="backward"),
-                dict(count=3, label="3m", step="month", stepmode="backward"),
-                dict(count=6, label="6m", step="month", stepmode="backward"),
-                dict(step="all")
-            ])
-        )
-    )
-    st.pyplot(fig.show())
 elif Name not in Code_name_list:
     st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
