@@ -16,7 +16,7 @@ st.sidebar.markdown("# Overseas stocks 📊")
 st.title('Overseas stocks 📈')
 Stockcode = pd.read_csv('data/oversea_stockcode.csv')
 Stockcode.set_index('Symbol', inplace=True)
-Name = st.text_input('Code Name')
+Name = st.text_input('Code Name', 'ticker를 입력해주세요.')
 Code_name_list = Stockcode.index.tolist()
 Stockcode['ticker'] = Stockcode.index
 if Name in Code_name_list:
