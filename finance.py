@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 import FinanceDataReader as fdr
+import matplotlib.pyplot as plt
+import koreanize_matplotlib
 
 Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
@@ -19,3 +21,5 @@ elif Name not in Code_name_list:
     st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
 
 
+fig = plt.plot(df['종가'])
+plt.title(Name)
