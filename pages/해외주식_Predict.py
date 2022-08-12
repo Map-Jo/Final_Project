@@ -5,6 +5,7 @@ import FinanceDataReader as fdr
 from keras.models import Sequential
 from keras.layers import LSTM, Dropout, Dense, Activation
 import streamlit as st
+import tensorflow 
 
 st.set_page_config(
     page_title="반포자이까지 한걸음",
@@ -12,18 +13,19 @@ st.set_page_config(
     layout="wide",
 )
 
-st.sidebar.markdown("# Predict Local_stocks 📊")
+st.sidebar.markdown("# Predict Overseas_stocks 📊")
 
-Stockcode = pd.read_csv('data/Stockcode.csv')
-Stockcode.set_index('Name', inplace=True)
+Stockcode = pd.read_csv('data/oversea_stockcode.csv')
+Stockcode.set_index('Symbol', inplace=True)
+Name = st.text_input('Code Name', 'ticker를 입력해주세요.')
+Stockcode['ticker'] = Stockcode.index
 
-Name = st.text_input('Code Name')
 Year = st.text_input('Year (기간을 오래 설정할수록 예측 정확성이 높아집니다.)','2020')
-# st.write('기간을 오래 설정할수록 예측 정확성이 높아집니다.')
 Code_name_list = Stockcode.index.tolist()
+
 if Name in Code_name_list:
-    code_num = Stockcode.at[Name, 'Symbol']
-    df = fdr.DataReader(code_num, Year)
+    code_num = Stockcode.at[Name, 'ticker'][0]
+    df = fdr.DataReader(code_num)
     df = df.rename(columns={'Open':'시가', 'High':'고가','Low':'저가', 'Close':'종가', 'Volume':'거래량', 'Change':'전일대비'})
 
     high_prices = df['고가'].values

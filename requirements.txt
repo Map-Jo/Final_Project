@@ -1,8 +1,9 @@
 pandas
 streamlit
-FinanceDataReader
+finance-dataReader
 matplotlib
 koreanize_matplotlib
 plotly
-urllib
+urllib3
 keras
+tensorflow
