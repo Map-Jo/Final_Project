@@ -1,8 +1,8 @@
 pandas
 streamlit
-finance-dataReader
+FinanceDataReader
 matplotlib
 koreanize_matplotlib
 plotly
+urllib
 keras
-datetime
