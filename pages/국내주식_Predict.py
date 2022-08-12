@@ -5,6 +5,7 @@ import FinanceDataReader as fdr
 from keras.models import Sequential
 from keras.layers import LSTM, Dropout, Dense, Activation
 import streamlit as st
+import tensorflow
 
 st.set_page_config(
     page_title="반포자이까지 한걸음",
