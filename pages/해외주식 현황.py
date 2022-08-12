@@ -1,9 +1,9 @@
 # 환율 변환 코드출처: https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=nanayagoon&logNo=221246948133
 
-import FinanceDataReader as fdr
-import urllib.request
 import pandas as pd
 import streamlit as st
+import FinanceDataReader as fdr
+import urllib.request
 
 st.set_page_config(
     page_title="반포자이까지 한걸음",
