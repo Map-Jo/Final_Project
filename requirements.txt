@@ -6,3 +6,4 @@ koreanize_matplotlib
 plotly
 urllib3
 keras
+tensorflow
