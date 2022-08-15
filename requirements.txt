@@ -5,9 +5,4 @@ matplotlib
 koreanize_matplotlib
 plotly
 urllib3
-keras
-tensorflow
 datetime
-dateutil
-mpl-finance
-sklearn
