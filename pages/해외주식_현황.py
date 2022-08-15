@@ -4,6 +4,8 @@ import pandas as pd
 import streamlit as st
 import FinanceDataReader as fdr
 import urllib.request
+import plotly.graph_objects as go
+import plotly.express as px
 
 st.set_page_config(
     page_title="반포자이까지 한걸음",
@@ -30,7 +32,7 @@ usdletter =  text[usdwhere+48] + text[usdwhere+50:usdwhere+56]
 
 Stockcode = pd.read_csv('data/oversea_stockcode.csv')
 Stockcode.set_index('Symbol', inplace=True)
-Name = st.text_input('Code Name', 'ticker를 입력해주세요.')
+Name = st.text_input('Code Name', 'ticker를 입력해주세요.').upper()
 Code_name_list = Stockcode.index.tolist()
 Stockcode['ticker'] = Stockcode.index
 if Name in Code_name_list:
@@ -45,6 +47,34 @@ if Name in Code_name_list:
     col1.metric("현재 주식가격",format(df['Close'].tail(1)[0], ',')+'$', "%s원" %k_money)
     col2.metric("현재 거래량", format(round(df['Volume'].tail(1)[0]), ','),"%.2f%%" %(df['Volume'].pct_change().tail(1)[0] * 100))
     col3.metric("전일 대비 가격", "%d$" %(df['Close'].diff().tail(1)[0]), "%.2f%%" %(df['Change'].tail(1)[0] * 100))
+
+    fig = px.line(df, y='Close', title='{} 종가 Time Series'.format(Name))
+
+    fig.update_xaxes(
+        rangeslider_visible=True,
+        rangeselector=dict(
+            buttons=list([
+                dict(count=1, label="1m", step="month", stepmode="backward"),
+                dict(count=3, label="3m", step="month", stepmode="backward"),
+                dict(count=6, label="6m", step="month", stepmode="backward"),
+                dict(step="all")
+            ])
+        )
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    fig2 = go.Figure(data=[go.Candlestick(x=df.index,
+                open=df['Open'],
+                high=df['High'],
+                low=df['Low'],
+                close=df['Close'],
+                increasing_line_color = 'tomato',
+                decreasing_line_color = 'royalblue',
+                showlegend = False)])
+
+    fig2.update_layout(title='{} Candlestick chart'.format(Name))
+    st.plotly_chart(fig2, use_container_width=True)
+
     st.text(prin +'의 KEB하나은행 환율정보 입니다.')
     st.text('현재 1$당 '+str(usdletter)+'원 입니다.')
 elif Name not in Code_name_list:
