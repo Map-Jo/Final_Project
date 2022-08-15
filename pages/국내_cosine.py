@@ -1,9 +1,21 @@
+# 코사인 유사도 코드출처 : https://teddylee777.github.io/pandas/cos-sim-stock
+
 import FinanceDataReader as fdr
 import pandas as pd
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import datetime
+
+st.set_page_config(
+    page_title="반포자이까지 한걸음",
+    page_icon= "chart_with_upwards_trend",
+    layout="wide",
+)
+
+st.sidebar.markdown("# Predict Local Stockcode 📊")
+
+st.title('국내주식 종목의 주가를 예측해 보세요 📈')
 
 
 Stockcode = pd.read_csv('data/Stockcode.csv')
@@ -30,29 +42,17 @@ if Name in Code_name_list:
     sim_list = []
 
     for i in range(moving_cnt):
-        # i 번째 인덱스 부터 i+window_size 만큼의 범위를 가져와 target 변수에 대입합니다
         target = data['Close'].iloc[i:i+window_size]
-        
-        # base와 마찬가지로 정규화를 적용하여 스케일을 맞춰 줍니다
         target = (target - target.min()) / (target.max() - target.min())
-        
-        # 코사인 유사도를 계산합니다
         cos_similarity = cosine_similarity(base, target)
-        
-        # 계산된 코사인 유사도를 추가합니다
         sim_list.append(cos_similarity)
 
     top = pd.Series(sim_list).sort_values(ascending=False).head(1).index[0]
 
     idx=top
-
-    # target 변수에 종가 데이터의 [기준 인덱스] 부터 [기준 인덱스 + window_size + 예측(5일)] 데이터를 추출합니다
     target = data['Close'].iloc[idx:idx+window_size+5]
-
-    # 정규화를 적용합니다
     target = (target - target.min()) / (target.max() - target.min())
 
-    # 결과를 시각화합니다
     fig = plt.figure(figsize=(20,10))
     plt.plot(base.values, label='base', color='grey')
     plt.plot(target.values, label='target', color='orangered')
