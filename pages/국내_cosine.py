@@ -4,7 +4,6 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import datetime
-from pandas_datareader import data as pdr
 
 
 Stockcode = pd.read_csv('data/Stockcode.csv')
