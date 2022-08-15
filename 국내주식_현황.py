@@ -3,6 +3,8 @@ import streamlit as st
 import FinanceDataReader as fdr
 import plotly.graph_objects as go
 import plotly.express as px
+from PIL import Image
+
 
 st.set_page_config(
     page_title="반포자이까지 한걸음",
@@ -12,7 +14,11 @@ st.set_page_config(
 
 st.sidebar.markdown("# Local Stocks 📊")
 
-st.title('Local Stocks 📈')
+st.title('나와 함께 반포 자이에 살지 않겠어요?')
+image = Image.open('data/stockcode.jpg')
+st.image(image, width=800, caption= 'The Great GATSBY')
+
+st.header('Local Stocks 📈')
 Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
 Name = st.text_input('Code Name')
