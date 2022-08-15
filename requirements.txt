@@ -6,5 +6,5 @@ koreanize_matplotlib
 plotly
 urllib3
 datetime
-dateutil
+relativedelta
 mpl-finance
