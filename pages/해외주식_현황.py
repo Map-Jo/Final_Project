@@ -34,7 +34,7 @@ Name = st.text_input('Code Name', 'ticker를 입력해주세요.')
 Code_name_list = Stockcode.index.tolist()
 Stockcode['ticker'] = Stockcode.index
 if Name in Code_name_list:
-    code_num = Stockcode.at[Name, 'ticker'][0]
+    code_num = Stockcode.at[Name, 'ticker']
     df = fdr.DataReader(code_num)
     money = df['Close'].tail(1)
     k_money = float(money)*float(usdletter)
