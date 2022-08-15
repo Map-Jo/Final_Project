@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import time
 
-start = time.time()
 st.set_page_config(
     page_title="반포자이까지 한걸음",
     page_icon= "chart_with_upwards_trend",
@@ -31,8 +30,3 @@ if Name in Code_name_list:
 
 elif Name not in Code_name_list:
     st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
-
-a = "time :", time.time() - start
-st.text(a)
-
-('time :', 0.2275242805480957)
