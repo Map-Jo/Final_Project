@@ -21,7 +21,7 @@ st.image(image, width=800, caption= 'The Great GATSBY')
 st.header('Local Stocks 📈')
 Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
-Name = st.text_input('Code Name')
+Name = st.text_input('Code Name').upper()
 Code_name_list = Stockcode.index.tolist()
 
 if Name in Code_name_list:
