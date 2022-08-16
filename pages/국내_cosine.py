@@ -20,7 +20,7 @@ st.title('국내주식 종목의 주가를 예측해 보세요 📈')
 
 Stockcode = pd.read_csv('data/Stockcode.csv')
 Stockcode.set_index('Name', inplace=True)
-Name =input().upper()
+Name =st.text_input('Code name').upper()
 
 Code_name_list = Stockcode.index.tolist()
 
