@@ -8,6 +8,7 @@ import urllib.request
 import datetime
 import numpy as np
 import matplotlib.pyplot as plt
+from PIL import Image
 
 st.set_page_config(
     page_title="반포자이까지 한걸음",
@@ -118,9 +119,13 @@ if Name in Code_name_list:
         st.text('현재 1$당 '+str(usdletter)+'원 입니다.')
 
     elif data.shape[0] < 60:
-        st.text(f'{Name}은 최근에 상장한 주식으로 예상됩니다.')
-        st.text('예측할 데이터가 부족합니다.')
-        st.text('충분한 데이터가 모일 때까지 조금만 기다려 주세요.')
+        st.markdown(f'**{Name}**은 최근에 상장한 주식으로 예상됩니다.')
+        st.markdown('예측하기에는 데이터가 부족합니다.')
+        st.markdown('충분한 데이터가 모일 때까지 조금만 기다려 주세요.')
+        st.markdown('그때 다시 만나요~')
+
+        image = Image.open('data/waitplease.png')
+        st.image(image, width=500)
 
 elif Name not in Code_name_list:
     st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
