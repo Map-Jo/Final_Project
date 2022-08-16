@@ -70,9 +70,9 @@ if Name in Code_name_list:
         st.markdown(f'현재 주식 상황과 **{cos} %** 유사한 시기의 주식 상황입니다.')
         future = round(preds.mean()*100, 2)
         if future > 0:
-            st.markdown(f'위의 주식 상황을 바탕으로 앞으로 **{Name}** 주식은 **{future}%** 상승할 것으로 보입니다.')
+            st.markdown(f'위의 주식 상황을 바탕으로 앞으로 5일동안 **{Name}** 주식은 평균 **{future}%** 상승할 것으로 보입니다.')
         elif future < 0:
-            st.markdown(f'위의 주식 상황을 바탕으로 앞으로 **{Name}** 주식은 **{future}%** 하락할 것으로 보입니다.')
+            st.markdown(f'위의 주식 상황을 바탕으로 앞으로 5일동안 **{Name}** 주식은 평균 **{future}%** 하락할 것으로 보입니다.')
 
         pred = preds.mean()
         predict = data['Close'].tail(1).values * preds.mean()
