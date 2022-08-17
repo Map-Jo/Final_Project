@@ -53,10 +53,10 @@ if Name in Code_name_list:
             top = pd.Series(sim_list).sort_values(ascending=False).head(1).index[0]
 
             idx=top
-            target = data['Close'].iloc[idx:idx+window_size+5]
+            target = data['Close'].iloc[idx:idx+window_size+next_date]
             target = (target - target.min()) / (target.max() - target.min())
 
-            fig = plt.figure(figsize=(20,10))
+            fig = plt.figure(figsize=(20,5))
             plt.plot(base.values, label='base', color='grey')
             plt.plot(target.values, label='target', color='orangered')
             plt.xticks(np.arange(len(target)), list(target.index.strftime('%Y-%m-%d')), rotation=45)
@@ -75,20 +75,20 @@ if Name in Code_name_list:
             elif future < 0:
                 st.markdown(f'위의 주식 상황을 바탕으로 앞으로 5일동안 **{Name}** 주식은 평균 **{future}%** 하락할 것으로 보입니다.')
 
-            pred = preds.mean()
-            predict = data['Close'].tail(1).values * preds.mean()
+            pred = preds[0]
+            predict = data['Close'].tail(1).values * pred
             yesterday_close = data['Close'].tail(1).values
 
             if pred > 0:
                 plus_money = yesterday_close + predict
                 plus_money = format(int(plus_money), ',')
-                st.markdown(f'예상 주가는 **{plus_money}원** 입니다.')
+                st.markdown(f'내일 **{Name}** 주식은 **{round(pred*100,2)} %** 상승할 예정이고, 주가는 **{plus_money}원**으로 예상됩니다.')
             elif pred < 0:
                 minus_money = yesterday_close - predict
                 minus_money = format(int(minus_money), ',')
-                st.markdown(f'예상 주가는 **{minus_money}원** 입니다.')
+                st.markdown(f'내일 **{Name}** 주식은 **{round(pred*100,2)} %** 하락할 예정이고, 주가는 **{minus_money}원**으로 예상됩니다.')
             else:
-                st.markdown(yesterday_close)
+                st.markdown(f'내일 **{Name} 주식은 변동이 없을 것으로 예상됩니다.')
         elif data.shape[0] < 60:
             st.markdown(f'**{Name}**은 최근에 상장한 주식으로 예상됩니다.')
             st.markdown('예측할 데이터가 부족합니다.')
