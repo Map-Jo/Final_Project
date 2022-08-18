@@ -13,8 +13,8 @@ st.set_page_config(
 st.sidebar.markdown("# Korea Stock Market 📊")
 
 st.markdown(""" <style> .font {
-    font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
-    </style> """, unsafe_allow_html=True)
+font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
+</style> """, unsafe_allow_html=True)
 st.markdown('<p class="font"> Today\'s Korea Stock Market!</p>', unsafe_allow_html=True)
 
 st.header('Korea Stocks 📈')
