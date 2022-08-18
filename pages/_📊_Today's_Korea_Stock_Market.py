@@ -3,7 +3,6 @@ import streamlit as st
 import FinanceDataReader as fdr
 import plotly.graph_objects as go
 import plotly.express as px
-from PIL import Image
 import numpy as np
 st.set_page_config(
     page_title="반포자이까지 한걸음",
