@@ -1,10 +1,5 @@
-import pandas as pd
 import streamlit as st
-import FinanceDataReader as fdr
-import plotly.graph_objects as go
-import plotly.express as px
 from PIL import Image
-from streamlit_option_menu import option_menu
 st.set_page_config(
     page_title="반포자이까지 한걸음",
     page_icon= "chart_with_upwards_trend",
