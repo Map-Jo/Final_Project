@@ -81,7 +81,7 @@ with st.spinner('Wait for it...'):
 
         # 52주 베타 추출 함수
         def get_beta(code):
-            response = requests.get(f"https://navercomp.wisereport.co.kr/v2/company/c1010001.aspx?cmp_cd={code}&cn=",headers={'User-Agent': 'Mozilla/5.0'})
+            response = requests.get(f"https://navercomp.wisereport.co.kr/v2/company/c1010001.aspx?cmp_cd={code}&cn=")
             html = bs(response.text, "lxml")
             tmp = html.select("#cTB11 > tbody > tr:nth-child(6) > td")
             
