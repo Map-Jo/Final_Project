@@ -14,7 +14,7 @@ from pykrx import stock
 
 import matplotlib.pyplot as plt
 import koreanize_matplotlib
-
+import json
 
 st.markdown("# Portfolio for Risk Averse")
 st.markdown("## 무위험이자율")
@@ -83,6 +83,7 @@ with st.spinner('Wait for it...'):
         def get_beta(code):
             response = requests.get(f"https://navercomp.wisereport.co.kr/v2/company/c1010001.aspx?cmp_cd={code}&cn=", headers={"User-Agent": 'Mozilla/5.0'})
             html = bs(response.text, "lxml")
+            html = response.json()
             tmp = html.select("#cTB11 > tbody > tr:nth-child(6) > td")
             
             
