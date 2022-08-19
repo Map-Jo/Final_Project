@@ -69,7 +69,7 @@ else:
 
     # 52주 베타 추출 함수
     def get_beta(code):
-        response = requests.get(f"https://navercomp.wisereport.co.kr/v2/company/c1010001.aspx?cmp_cd={code}&cn=")
+        response = requests.get(f"https://navercomp.wisereport.co.kr/v2/company/c1010001.aspx?cmp_cd={code}&cn=", )
         response = response.decode('utf-8')
         response = json.load(response)
         html = bs(response.text, "lxml")
