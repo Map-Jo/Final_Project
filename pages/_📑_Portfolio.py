@@ -33,12 +33,10 @@ st.markdown("* x표시가 된 부분이 모든 금액을 입력하신 종목에 
 st.markdown("* x표시를 기준으로 투자자의 성향에 따라 가중치를 조정해서 확인하시면 됩니다.")
 st.markdown("* 해당 지표는 세금, 거래 수수료 등이 반영되지 않은 수치이므로 참고용으로 사용하시길 바랍니다.")
 
-df_krx = pd.read_csv("data/All_KRX.csv")
+df_krx = fdr.StockListing("KRX")
 df_krx = df_krx.dropna(axis=0).reset_index(drop=True)
-name_list = df_krx['Name'].tolist()
-name_list.insert(0, '')
-tmp_item_info = st.selectbox('검색하실 주식 종목명을 입력해 주세요.',name_list)
-# tmp_item_info = st.text_input("Code Name", placeholder="종목명을 정확하게 입력해 주세요")
+
+tmp_item_info = st.text_input("Code Name", placeholder="종목명을 정확하게 입력해 주세요")
 
 # 종목명입력하면 종목 코드와 시장 반환해 주는 함수
 def find_history_krx(name):
