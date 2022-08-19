@@ -33,7 +33,7 @@ st.markdown("* x표시가 된 부분이 모든 금액을 입력하신 종목에 
 st.markdown("* x표시를 기준으로 투자자의 성향에 따라 가중치를 조정해서 확인하시면 됩니다.")
 st.markdown("* 해당 지표는 세금, 거래 수수료 등이 반영되지 않은 수치이므로 참고용으로 사용하시길 바랍니다.")
 
-df_krx = fdr.StockListing("KRX")
+df_krx = pd.read_csv('data/Stockcode.csv')
 df_krx = df_krx.dropna(axis=0).reset_index(drop=True)
 
 name_list = df_krx['Name'].tolist()
