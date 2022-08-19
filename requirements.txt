@@ -9,5 +9,5 @@ bs4
 numpy
 pykrx
 koreanize_matplotlib
-beautifulsoup4
+requests
 
