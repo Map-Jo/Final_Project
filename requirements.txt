@@ -9,3 +9,4 @@ bs4
 numpy
 pykrx
 koreanize_matplotlib
+requests
