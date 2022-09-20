@@ -41,32 +41,32 @@ with st.spinner('Wait for it...'):
         col2.metric("현재 거래량", format(df['Volume'].tail(1)[0], ','),"%.2f%%" %(df['Volume'].pct_change().tail(1)[0] * 100))
         col3.metric("전일 대비 가격", "%d원" %(df['Close'].diff().tail(1)[0]), "%.2f%%" %(df['Change'].tail(1)[0] * 100))
 
-        fig = px.line(df, y='Close', title='{} 종가 Time Series'.format(Name))
+#         fig = px.line(df, y='Close', title='{} 종가 Time Series'.format(Name))
 
-        fig.update_xaxes(
-            rangeslider_visible=True,
-            rangeselector=dict(
-                buttons=list([
-                    dict(count=1, label="1m", step="month", stepmode="backward"),
-                    dict(count=3, label="3m", step="month", stepmode="backward"),
-                    dict(count=6, label="6m", step="month", stepmode="backward"),
-                    dict(step="all")
-                ])
-            )
-        )
-        st.plotly_chart(fig, use_container_width=True)
+#         fig.update_xaxes(
+#             rangeslider_visible=True,
+#             rangeselector=dict(
+#                 buttons=list([
+#                     dict(count=1, label="1m", step="month", stepmode="backward"),
+#                     dict(count=3, label="3m", step="month", stepmode="backward"),
+#                     dict(count=6, label="6m", step="month", stepmode="backward"),
+#                     dict(step="all")
+#                 ])
+#             )
+#         )
+#         st.plotly_chart(fig, use_container_width=True)
 
-        fig2 = go.Figure(data=[go.Candlestick(x=df.index,
-                    open=df['Open'],
-                    high=df['High'],
-                    low=df['Low'],
-                    close=df['Close'],
-                    increasing_line_color = 'tomato',
-                    decreasing_line_color = 'royalblue',
-                    showlegend = False)])
+#         fig2 = go.Figure(data=[go.Candlestick(x=df.index,
+#                     open=df['Open'],
+#                     high=df['High'],
+#                     low=df['Low'],
+#                     close=df['Close'],
+#                     increasing_line_color = 'tomato',
+#                     decreasing_line_color = 'royalblue',
+#                     showlegend = False)])
 
-        fig2.update_layout(title='{} Candlestick chart'.format(Name))
-        st.plotly_chart(fig2, use_container_width=True)
+#         fig2.update_layout(title='{} Candlestick chart'.format(Name))
+#         st.plotly_chart(fig2, use_container_width=True)
 
     elif Name not in Code_name_list:
         st.text('검색하신 주식 종목이 없습니다. 정확하게 입력해주세요.')
