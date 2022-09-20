@@ -19,10 +19,10 @@ st.markdown('<p class="font"> Today\'s Korea Stock Market!</p>', unsafe_allow_ht
 
 st.header('Korea Stocks 📈')
 
-# Stockcode = pd.read_csv('data/Stockcode.csv')
-# name_list = Stockcode['Name'].tolist()
-# name_list.insert(0, '')
-# choice = st.selectbox('검색하실 주식 종목명을 입력해 주세요.',name_list)
+Stockcode = pd.read_csv('data/Stockcode.csv')
+name_list = Stockcode['Name'].tolist()
+name_list.insert(0, '')
+choice = st.selectbox('검색하실 주식 종목명을 입력해 주세요.',name_list)
 
 
 # for i in range(len(name_list)):
