@@ -30,13 +30,13 @@ for i in range(len(name_list)):
         choice_name = Stockcode.loc[Stockcode['Name'] == name_list[i], 'Name'].values
         choice_name_to_str =np.array2string(choice_name).strip("[]")
         Name = choice_name_to_str.strip("''")
-Stockcode.set_index('Name', inplace=True)
-Code_name_list = Stockcode.index.tolist()
-with st.spinner('Wait for it...'):
-    if Name in Code_name_list:
-        code_num = Stockcode.at[Name, 'Symbol']
-        df = fdr.DataReader(code_num)
-        col1, col2, col3 = st.columns(3)
+# Stockcode.set_index('Name', inplace=True)
+# Code_name_list = Stockcode.index.tolist()
+# with st.spinner('Wait for it...'):
+#     if Name in Code_name_list:
+#         code_num = Stockcode.at[Name, 'Symbol']
+#         df = fdr.DataReader(code_num)
+#         col1, col2, col3 = st.columns(3)
 #         col1.metric("현재 주식가격",format(df['Close'].tail(1)[0], ',')+'원', "%d원" %(df['Close'].diff().tail(1)[0]))
 #         col2.metric("현재 거래량", format(df['Volume'].tail(1)[0], ','),"%.2f%%" %(df['Volume'].pct_change().tail(1)[0] * 100))
 #         col3.metric("전일 대비 가격", "%d원" %(df['Close'].diff().tail(1)[0]), "%.2f%%" %(df['Change'].tail(1)[0] * 100))
