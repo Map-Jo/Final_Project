@@ -10,14 +10,14 @@ st.set_page_config(
     layout="wide",
 )
 
-# st.sidebar.markdown("# Korea Stock Market 📊")
+st.sidebar.markdown("# Korea Stock Market 📊")
 
-# st.markdown(""" <style> .font {
-# font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
-# </style> """, unsafe_allow_html=True)
-# st.markdown('<p class="font"> Today\'s Korea Stock Market!</p>', unsafe_allow_html=True)
+st.markdown(""" <style> .font {
+font-size:35px ; font-family: 'Cooper Black'; color: #FF9633;} 
+</style> """, unsafe_allow_html=True)
+st.markdown('<p class="font"> Today\'s Korea Stock Market!</p>', unsafe_allow_html=True)
 
-# st.header('Korea Stocks 📈')
+st.header('Korea Stocks 📈')
 
 # Stockcode = pd.read_csv('data/Stockcode.csv')
 # name_list = Stockcode['Name'].tolist()
